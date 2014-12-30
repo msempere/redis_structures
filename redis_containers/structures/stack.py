@@ -3,7 +3,7 @@ from base import Base
 
 class Stack(Base):
     def pop(self):
-        return self.loads(self.redis.lpop(self.name))
+        return self._loads(self.redis.lpop(self.name))
 
     def push(self, item):
         try:
