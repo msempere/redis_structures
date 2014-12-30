@@ -6,6 +6,6 @@ Container data structures for Redis
 ## Structures:
 
 * Queue
-* Priority queues
-* Stacks
-* Deques
+* Priority queue
+* Stack
+* Deque
