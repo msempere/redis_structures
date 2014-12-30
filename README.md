@@ -22,6 +22,8 @@ Container data structures for Redis
 2
 >>> stack.pop()
 another_element
+>>> stack.content()
+[‘another_element’, ‘a_element’]
 >>> stack.clear()
 True
 ```

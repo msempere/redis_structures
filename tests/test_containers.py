@@ -26,3 +26,17 @@ class TestContainers(TestCase):
         s.pop()
         assert len(s) == 0
 
+    def test_clear_stack(self):
+        s = Stack('e_stack')
+        s.push('a_element')
+        assert len(s) == 1
+        s.clear()
+        assert len(s) == 0
+
+    def test_content_stack(self):
+        s = Stack('f_stack')
+        s.push('a_element')
+        s.push('b_element')
+        assert len(s) == 2
+        assert s.content() == ['b_element', 'a_element']
+
