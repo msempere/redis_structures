@@ -5,5 +5,5 @@ python:
       - "3.4"
 services:
       - redis-server
-install: "pip install -r requirements.txt"
+install: "pip install -r requeriments.txt"
 script: python setup.py test
