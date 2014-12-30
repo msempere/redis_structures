@@ -26,4 +26,8 @@ class Base(object):
         return [self._loads(item) for item in self.redis.lrange(self.name, 0, -1)]
 
     def clear(self):
-        self.redis.delete(self.name)
+        try:
+            self.redis.delete(self.name)
+            return True
+        except:
+            return False
