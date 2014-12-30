@@ -1,4 +1,4 @@
-redis_containers
+Redis_Containers
 ================
 
 Container data structures for Redis
