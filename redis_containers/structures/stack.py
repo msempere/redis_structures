@@ -2,6 +2,7 @@
 from base import Base
 
 class Stack(Base):
+
     def pop(self):
         return self._loads(self.redis.lpop(self.name))
 
@@ -9,6 +10,5 @@ class Stack(Base):
         try:
             self.redis.lpush(self.name, self._dumps(item))
             return True
-        except Exception as e:
-            print e
+        except:
             return False
