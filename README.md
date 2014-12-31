@@ -5,7 +5,7 @@ Container data structures for Redis
 ## Structures:
 
 * Queue
-* Priority queue (TODO)
+* Priority queue
 * Stack
 * Deque (TODO)
 
@@ -63,5 +63,29 @@ True
 >>> queue.clear()
 True
 >>> queue.content()
+[]
+`````
+
+* **PRIORITY QUEUE**: Abstract data type where each element has a priority associated
+```python
+>>> from redis_containers import PriorityQueue
+>>> pq = PriorityQueue(name='dummy_queue', host='127.0.0.1', port=6379)
+>>> len(pq)
+0
+>>> pq.push('a_element', 20.0)
+>>> pq.push('another_element', 40.0)
+>>> pq.push('one_more_element', 10.0)
+# same as doing pq.addAll([('a_element', 20.0), ('another_element', 40.0), ('one_more_element', 10.0)]
+>>> len(pq)
+3
+>>> pq.content()
+[('one_more_element', 10.0), ('a_element', 20.0), ('another_element', 40.0)]
+>>> pq.pop()
+('another_element', 40.0)
+>>> queue.content()
+[('one_more_element', 10.0), ('a_element', 20.0)]
+>>> pq.clear()
+True
+>>> pq.content()
 []
 `````
