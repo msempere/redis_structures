@@ -57,7 +57,7 @@ True
 >>> queue.pop()
 'a_element'
 >>> queue.content()
-['one_more_element', ‘another_element’]
+['one_more_element', 'another_element']
 >>> queue.clear()
 True
 >>> queue.content()
