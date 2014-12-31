@@ -21,7 +21,7 @@ python setup.py install
 * **STACK**: LIFO data structure
 ```python
 >>> from redis_containers import Stack
->>> stack = Stack('dummy_stack')
+>>> stack = Stack(name='dummy_stack', host='127.0.0.1', port=6379)
 >>> len(stack)
 0
 >>> stack.push('a_element')
@@ -44,7 +44,7 @@ True
 * **QUEUE**: FIFO data structure
 ```python
 >>> from redis_containers import Queue
->>> queue = Queue('dummy_queue')
+>>> queue = Queue(name='dummy_queue', host='127.0.0.1', port=6379)
 >>> len(queue)
 0
 >>> queue.push('a_element')
