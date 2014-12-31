@@ -9,6 +9,14 @@ Container data structures for Redis
 * Stack
 * Deque (TODO)
 
+## Setup:
+```
+pip install -r requirements.txt
+```
+```
+python setup.py install
+```
+
 ## Usage:
 * **STACK**: LIFO data structure
 ```python
