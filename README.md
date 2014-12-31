@@ -4,7 +4,7 @@ Container data structures for Redis
 
 ## Structures:
 
-* Queue (TODO)
+* Queue
 * Priority queue (TODO)
 * Stack
 * Deque (TODO)
@@ -26,12 +26,40 @@ python setup.py install
 0
 >>> stack.push('a_element')
 >>> stack.push('another_element')
+>>> stack.push('one_more_element')
 >>> len(stack)
-2
+3
+>>> stack.content()
+['one_more_element', ‘another_element’, ‘a_element’]
 >>> stack.pop()
-another_element
+'one_more_element'
 >>> stack.content()
 [‘another_element’, ‘a_element’]
 >>> stack.clear()
 True
+>>> stack.content()
+[]
 ```
+
+* **QUEUE**: FIFO data structure
+```python
+>>> from redis_containers import Queue
+>>> queue = Queue('dummy_queue')
+>>> len(queue)
+0
+>>> queue.push('a_element')
+>>> queue.push('another_element')
+>>> queue.push('one_more_element')
+>>> len(queue)
+3
+>>> queue.content()
+['one_more_element', ‘another_element’, ‘a_element’]
+>>> queue.pop()
+'a_element'
+>>> queue.content()
+['one_more_element', ‘another_element’]
+>>> queue.clear()
+True
+>>> queue.content()
+[]
+`````
