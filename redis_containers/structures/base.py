@@ -31,3 +31,14 @@ class Base(object):
             return True
         except:
             return False
+
+    def addAll(self, collection=[]):
+        assert type(collection) == list
+        with self.redis.pipeline() as pipe:
+            for element in collection:
+                try:
+                    pipe.lpush(self.name, self._dumps(element))
+                except:
+                    continue
+            pipe.execute()
+
