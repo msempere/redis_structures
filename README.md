@@ -26,7 +26,8 @@ python setup.py install
 0
 >>> stack.push('a_element')
 >>> stack.push('another_element')
->>> stack.push('one_more_element')
+>>> stack.push('one_more_element') 
+# same as doing stack.addAll(['a_element', 'another_element', 'one_more_element']
 >>> len(stack)
 3
 >>> stack.content()
@@ -50,6 +51,7 @@ True
 >>> queue.push('a_element')
 >>> queue.push('another_element')
 >>> queue.push('one_more_element')
+# same as doing queue.addAll(['a_element', 'another_element', 'one_more_element']
 >>> len(queue)
 3
 >>> queue.content()
