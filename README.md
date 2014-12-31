@@ -30,11 +30,11 @@ python setup.py install
 >>> len(stack)
 3
 >>> stack.content()
-['one_more_element', ‘another_element’, ‘a_element’]
+['one_more_element', 'another_element', 'a_element']
 >>> stack.pop()
 'one_more_element'
 >>> stack.content()
-[‘another_element’, ‘a_element’]
+['another_element', 'a_element']
 >>> stack.clear()
 True
 >>> stack.content()
@@ -53,7 +53,7 @@ True
 >>> len(queue)
 3
 >>> queue.content()
-['one_more_element', ‘another_element’, ‘a_element’]
+['one_more_element', 'another_element', 'a_element']
 >>> queue.pop()
 'a_element'
 >>> queue.content()
