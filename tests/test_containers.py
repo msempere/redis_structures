@@ -1,4 +1,4 @@
-from redis_containers import Stack, Queue, PriorityQueue, CircularBuffer
+from redis_containers import Stack, Queue, PriorityQueue, CircularBuffer, Deque
 from unittest import TestCase
 
 class TestStack(TestCase):
@@ -199,4 +199,76 @@ class TestCircularBuffer(TestCase):
         assert len(cb) == 3
         assert cb.content() == ['overwrite_element', 'one_more_element', 'another_element']
 
+class TestDeque(TestCase):
+
+    def test_empty_deque(self):
+        deque = Deque('a_deque')
+        assert len(deque) == 0
+
+    def test_front_push_deque(self):
+        deque = Deque('b_deque')
+        deque.front_push('a_element')
+        assert len(deque) == 1
+
+    def test_back_push_deque(self):
+        deque = Deque('b2_deque')
+        deque.back_push('a_element')
+        assert len(deque) == 1
+
+    def test_front_pop_deque(self):
+        deque = Deque('c_deque')
+        assert len(deque) == 0
+        deque.front_push('a_element')
+        assert len(deque) == 1
+        assert deque.front_pop() == 'a_element'
+        assert len(deque) == 0
+
+    def test_back_pop_deque(self):
+        deque = Deque('c2_deque')
+        assert len(deque) == 0
+        deque.back_push('a_element')
+        assert len(deque) == 1
+        assert deque.back_pop() == 'a_element'
+        assert len(deque) == 0
+
+    def test_front_pop_empty_deque(self):
+        deque = Deque('d_deque')
+        assert len(deque) == 0
+        assert deque.front_pop() == None
+        assert len(deque) == 0
+
+    def test_back_pop_empty_deque(self):
+        deque = Deque('d2_deque')
+        assert len(deque) == 0
+        assert deque.back_pop() == None
+        assert len(deque) == 0
+
+    def test_clear_deque(self):
+        deque = Deque('e_deque')
+        deque.front_push('a_element')
+        assert len(deque) == 1
+        deque.clear()
+        assert len(deque) == 0
+
+    def test_content_deque(self):
+        deque = Deque('f_deque')
+        deque.front_push('a_element')
+        deque.front_push('b_element')
+        deque.back_push('c_element')
+        assert len(deque) == 3
+        assert deque.content() == ['c_element', 'a_element', 'b_element']
+        assert deque.back_pop() == 'c_element'
+        assert len(deque) == 2
+        assert deque.content() == ['a_element', 'b_element']
+
+    def test_addall_deque(self):
+        deque = Deque('g_deque')
+        assert len(deque) == 0
+        deque.addAll(collection=['a_element', 'another_element', 'one_more_element'])
+        assert len(deque) == 3
+        assert deque.content() == ['one_more_element', 'another_element', 'a_element']
+        deque.addAll(collection=['x_element', 'y_element'], back=False)
+        assert deque.content() == ['one_more_element', 'another_element', 'a_element', 'x_element', 'y_element']
+        deque.addAll(collection=['t_element', 'u_element'], back=True)
+        assert deque.content() == ['u_element', 't_element', 'one_more_element', 'another_element', 'a_element', 'x_element', 'y_element']
 
