@@ -10,6 +10,7 @@ class PriorityQueue(Base):
         return [(self._loads(element), score) for element, score in self.redis.zrange(self.name, 0, -1, withscores=True)]
 
     def push(self, element, score):
+        assert element
         assert type(score) == float
         try:
             self.redis.zadd(self.name, score, self._dumps(element))
@@ -46,3 +47,12 @@ class PriorityQueue(Base):
                 except:
                     continue
             pipe.execute()
+
+    def next(self):
+        try:
+            got = self.pop()
+            if got[0] and got[1]:
+                return got
+            raise StopIteration
+        except:
+            raise StopIteration

@@ -42,3 +42,14 @@ class Base(object):
                     continue
             pipe.execute()
 
+    def __iter__(self):
+        return self
+
+    def next(self):
+        try:
+            got = self.pop()
+            if got:
+                return got
+            raise StopIteration
+        except:
+            raise StopIteration

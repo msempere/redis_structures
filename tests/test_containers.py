@@ -1,4 +1,4 @@
-from redis_containers import Stack, Queue, PriorityQueue
+from redis_containers import Stack, Queue, PriorityQueue, CircularBuffer
 from unittest import TestCase
 
 class TestStack(TestCase):
@@ -86,7 +86,6 @@ class TestPriorityQueue(TestCase):
         assert s.content() == [('b_element', 20.0), ('a_element', 50.0), ('c_element', 100.0)]
         assert s.pop() == ('c_element', 100.0)
         assert len(s) == 2
-        print s.content()
         assert s.content() == [('b_element', 20.0), ('a_element', 50.0)]
 
     def test_addall_priority_queue(self):
@@ -139,4 +138,65 @@ class TestQueue(TestCase):
         assert len(q) == 1
         assert q.pop() == 'a_element'
         assert len(q) == 0
+
+
+class TestCircularBuffer(TestCase):
+
+    def test_empty_circular_buffer(self):
+        cb = CircularBuffer('a_cb', size=3)
+        assert len(cb) == 0
+
+    def test_push_circular_buffer(self):
+        cb = CircularBuffer('b_cb', size=3)
+        cb.push('a_element')
+        assert len(cb) == 1
+
+    def test_pop_circular_buffer(self):
+        cb = CircularBuffer('c_cb', size=3)
+        assert len(cb) == 0
+        cb.push('a_element')
+        assert len(cb) == 1
+        assert cb.pop() == 'a_element'
+        assert len(cb) == 0
+
+    def test_pop_empty_circular_buffer(self):
+        cb = CircularBuffer('d_cb', size=3)
+        assert len(cb) == 0
+        assert cb.pop() == None
+        assert len(cb) == 0
+
+    def test_clear_circular_buffer(self):
+        cb = CircularBuffer('e_cb', size=3)
+        cb.push('a_element')
+        assert len(cb) == 1
+        cb.clear()
+        assert len(cb) == 0
+
+    def test_content_circular_buffer(self):
+        cb = CircularBuffer('f_cb', size=3)
+        cb.push('a_element')
+        cb.push('b_element')
+        cb.push('c_element')
+        assert len(cb) == 3
+        assert cb.content() == ['c_element', 'b_element', 'a_element']
+        assert cb.pop() == 'a_element'
+        assert len(cb) == 2
+        assert cb.content() == ['c_element', 'b_element']
+
+    def test_addall_circular_buffer(self):
+        cb = CircularBuffer('g_cb', size=3)
+        assert len(cb) == 0
+        cb.addAll(collection=['a_element', 'another_element', 'one_more_element'])
+        assert len(cb) == 3
+        assert cb.content() == ['one_more_element', 'another_element', 'a_element']
+
+    def test_overwrite_circular_buffer(self):
+        cb = CircularBuffer('h_cb', size=3)
+        assert len(cb) == 0
+        cb.addAll(collection=['a_element', 'another_element', 'one_more_element'])
+        assert len(cb) == 3
+        cb.push('overwrite_element')
+        assert len(cb) == 3
+        assert cb.content() == ['overwrite_element', 'one_more_element', 'another_element']
+
 
