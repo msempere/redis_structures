@@ -7,6 +7,7 @@ Container data structures for Redis
 * Queue
 * Priority queue
 * Stack
+* Circular buffer
 * Deque (TODO)
 
 ## Setup:
@@ -88,4 +89,33 @@ True
 True
 >>> pq.content()
 []
-`````
+```
+
+* **CIRCULAR BUFFER**: Fixed-size buffer with connected end-to-end
+```python
+>>> from redis_containers import CircularBuffer
+>>> cb = CircularBuffer(name='dummy_cbuffer', size=3, host='127.0.0.1', port=6379)
+>>> len(cb)
+0
+>>> cb.push('a_element')
+>>> cb.push('another_element')
+>>> cb.push('one_more_element')
+# same as doing cb.addAll(['a_element', 'another_element', 'one_more_element']
+>>> len(cb)
+3
+>>> queue.content()
+['one_more_element', 'another_element', 'a_element']
+>>> cb.push('other_element!!') # overwriting old data because size=3
+>>> len(cb)
+3
+>>> cb.content()
+['other_element!!', 'one_more_element', 'another_element']
+>>> cb.pop()
+'another_element'
+>>> cb.content()
+['other_element!!', 'one_more_element',]
+>>> cb.clear()
+True
+>>> cb.content()
+[]
+```
