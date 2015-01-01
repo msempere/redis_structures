@@ -8,7 +8,7 @@ Container data structures for Redis
 * Priority queue
 * Stack
 * Circular buffer
-* Deque (TODO)
+* Deque
 
 ## Setup:
 ```
@@ -28,7 +28,7 @@ python setup.py install
 >>> stack.push('a_element')
 >>> stack.push('another_element')
 >>> stack.push('one_more_element') 
-# same as doing stack.addAll(['a_element', 'another_element', 'one_more_element']
+# same as doing stack.addAll(['a_element', 'another_element', 'one_more_element'])
 >>> len(stack)
 3
 >>> stack.content()
@@ -52,7 +52,7 @@ True
 >>> queue.push('a_element')
 >>> queue.push('another_element')
 >>> queue.push('one_more_element')
-# same as doing queue.addAll(['a_element', 'another_element', 'one_more_element']
+# same as doing queue.addAll(['a_element', 'another_element', 'one_more_element'])
 >>> len(queue)
 3
 >>> queue.content()
@@ -76,7 +76,7 @@ True
 >>> pq.push('a_element', 20.0)
 >>> pq.push('another_element', 40.0)
 >>> pq.push('one_more_element', 10.0)
-# same as doing pq.addAll([('a_element', 20.0), ('another_element', 40.0), ('one_more_element', 10.0)]
+# same as doing pq.addAll([('a_element', 20.0), ('another_element', 40.0), ('one_more_element', 10.0)])
 >>> len(pq)
 3
 >>> pq.content()
@@ -100,7 +100,7 @@ True
 >>> cb.push('a_element')
 >>> cb.push('another_element')
 >>> cb.push('one_more_element')
-# same as doing cb.addAll(['a_element', 'another_element', 'one_more_element']
+# same as doing cb.addAll(['a_element', 'another_element', 'one_more_element'])
 >>> len(cb)
 3
 >>> queue.content()
@@ -117,5 +117,34 @@ True
 >>> cb.clear()
 True
 >>> cb.content()
+[]
+```
+
+* **DEQUE**: Double-ended queue also called head-tail linked list
+```python
+>>> from redis_containers import Deque
+>>> dq = Deque(name='dummy_cbuffer', host='127.0.0.1', port=6379)
+>>> len(dq)
+0
+>>> dq.back_push('a_element')
+>>> dq.back_push('another_element')
+>>> dq.back_push('one_more_element')
+# same as doing dq.addAll(['one_more_element', 'another_element', 'a_element'], back=True)
+>>> len(dq)
+3
+>>> dq.content()
+['one_more_element', 'another_element', 'a_element']
+>>> dq.front_push('other_element!!')
+>>> len(dq)
+3
+>>> dq.content()
+['one_more_element', 'another_element', 'a_element', 'other_element!!']
+>>> dq.back_pop()
+'one_more_element'
+>>> dq.content()
+['another_element', 'a_element', 'other_element!!']
+>>> dq.clear()
+True
+>>> dq.content()
 []
 ```
