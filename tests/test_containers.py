@@ -199,23 +199,23 @@ class TestCircularBuffer(TestCase):
         assert len(cb) == 3
         assert cb.content() == ['overwrite_element', 'one_more_element', 'another_element']
 
-class Testdq(TestCase):
+class TestDeque(TestCase):
 
-    def test_empty_dq(self):
+    def test_empty_deque(self):
         dq = Deque('a_deque')
         assert len(dq) == 0
 
-    def test_front_push_dq(self):
+    def test_front_push_deque(self):
         dq = Deque('b_deque')
         dq.front_push('a_element')
         assert len(dq) == 1
 
-    def test_back_push_dq(self):
+    def test_back_push_deque(self):
         dq = Deque('b2_deque')
         dq.back_push('a_element')
         assert len(dq) == 1
 
-    def test_front_pop_dq(self):
+    def test_front_pop_deque(self):
         dq = Deque('c_deque')
         assert len(dq) == 0
         dq.front_push('a_element')
@@ -223,7 +223,7 @@ class Testdq(TestCase):
         assert dq.front_pop() == 'a_element'
         assert len(dq) == 0
 
-    def test_back_pop_dq(self):
+    def test_back_pop_deque(self):
         dq = Deque('c2_deque')
         assert len(dq) == 0
         dq.back_push('a_element')
@@ -231,26 +231,26 @@ class Testdq(TestCase):
         assert dq.back_pop() == 'a_element'
         assert len(dq) == 0
 
-    def test_front_pop_empty_dq(self):
+    def test_front_pop_empty_deque(self):
         dq = Deque('d_deque')
         assert len(dq) == 0
         assert dq.front_pop() == None
         assert len(dq) == 0
 
-    def test_back_pop_empty_dq(self):
+    def test_back_pop_empty_deque(self):
         dq = Deque('d2_deque')
         assert len(dq) == 0
         assert dq.back_pop() == None
         assert len(dq) == 0
 
-    def test_clear_dq(self):
+    def test_clear_deque(self):
         dq = Deque('e_deque')
         dq.front_push('a_element')
         assert len(dq) == 1
         dq.clear()
         assert len(dq) == 0
 
-    def test_content_dq(self):
+    def test_content_deque(self):
         dq = Deque('f_deque')
         dq.front_push('a_element')
         dq.front_push('b_element')
@@ -261,7 +261,7 @@ class Testdq(TestCase):
         assert len(dq) == 2
         assert dq.content() == ['a_element', 'b_element']
 
-    def test_addall_dq(self):
+    def test_addall_deque(self):
         dq = Deque('g_deque')
         assert len(dq) == 0
         dq.addAll(collection=['a_element', 'another_element', 'one_more_element'])
