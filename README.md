@@ -70,81 +70,81 @@ True
 * **PRIORITY QUEUE**: Abstract data type where each element has a priority associated
 ```python
 >>> from redis_containers import PriorityQueue
->>> pq = PriorityQueue(name='dummy_queue', host='127.0.0.1', port=6379)
->>> len(pq)
+>>> priority_queue = PriorityQueue(name='dummy_queue', host='127.0.0.1', port=6379)
+>>> len(priority_queue)
 0
->>> pq.push('a_element', 20.0)
->>> pq.push('another_element', 40.0)
->>> pq.push('one_more_element', 10.0)
-# same as doing pq.addAll([('a_element', 20.0), ('another_element', 40.0), ('one_more_element', 10.0)])
->>> len(pq)
+>>> priority_queue.push('a_element', 20.0)
+>>> priority_queue.push('another_element', 40.0)
+>>> priority_queue.push('one_more_element', 10.0)
+# same as doing priority_queue.addAll([('a_element', 20.0), ('another_element', 40.0), ('one_more_element', 10.0)])
+>>> len(priority_queue)
 3
->>> pq.content()
+>>> priority_queue.content()
 [('one_more_element', 10.0), ('a_element', 20.0), ('another_element', 40.0)]
->>> pq.pop()
+>>> priority_queue.pop()
 ('another_element', 40.0)
->>> queue.content()
+>>> priority_queue.content()
 [('one_more_element', 10.0), ('a_element', 20.0)]
->>> pq.clear()
+>>> priority_queue.clear()
 True
->>> pq.content()
+>>> priority_queue.content()
 []
 ```
 
 * **CIRCULAR BUFFER**: Fixed-size buffer with connected end-to-end
 ```python
 >>> from redis_containers import CircularBuffer
->>> cb = CircularBuffer(name='dummy_cbuffer', size=3, host='127.0.0.1', port=6379)
->>> len(cb)
+>>> circular_buffer = CircularBuffer(name='dummy_cbuffer', size=3, host='127.0.0.1', port=6379)
+>>> len(circular_buffer)
 0
->>> cb.push('a_element')
->>> cb.push('another_element')
->>> cb.push('one_more_element')
-# same as doing cb.addAll(['a_element', 'another_element', 'one_more_element'])
->>> len(cb)
+>>> circular_buffer.push('a_element')
+>>> circular_buffer.push('another_element')
+>>> circular_buffer.push('one_more_element')
+# same as doing circular_buffer.addAll(['a_element', 'another_element', 'one_more_element'])
+>>> len(circular_buffer)
 3
->>> queue.content()
+>>> circular_buffer.content()
 ['one_more_element', 'another_element', 'a_element']
->>> cb.push('other_element!!') # overwriting old data because size=3
->>> len(cb)
+>>> circular_buffer.push('other_element!!') # overwriting old data because size=3
+>>> len(circular_buffer)
 3
->>> cb.content()
+>>> circular_buffer.content()
 ['other_element!!', 'one_more_element', 'another_element']
->>> cb.pop()
+>>> circular_buffer.pop()
 'another_element'
->>> cb.content()
+>>> circular_buffer.content()
 ['other_element!!', 'one_more_element',]
->>> cb.clear()
+>>> circular_buffer.clear()
 True
->>> cb.content()
+>>> circular_buffer.content()
 []
 ```
 
 * **DEQUE**: Double-ended queue also called head-tail linked list
 ```python
 >>> from redis_containers import Deque
->>> dq = Deque(name='dummy_cbuffer', host='127.0.0.1', port=6379)
->>> len(dq)
+>>> deque = Deque(name='dummy_cbuffer', host='127.0.0.1', port=6379)
+>>> len(deque)
 0
->>> dq.back_push('a_element')
->>> dq.back_push('another_element')
->>> dq.back_push('one_more_element')
-# same as doing dq.addAll(['one_more_element', 'another_element', 'a_element'], back=True)
->>> len(dq)
+>>> deque.back_push('a_element')
+>>> deque.back_push('another_element')
+>>> deque.back_push('one_more_element')
+# same as doing deque.addAll(['one_more_element', 'another_element', 'a_element'], back=True)
+>>> len(deque)
 3
->>> dq.content()
+>>> deque.content()
 ['one_more_element', 'another_element', 'a_element']
->>> dq.front_push('other_element!!')
->>> len(dq)
+>>> deque.front_push('other_element!!')
+>>> len(deque)
 3
->>> dq.content()
+>>> deque.content()
 ['one_more_element', 'another_element', 'a_element', 'other_element!!']
->>> dq.back_pop()
+>>> deque.back_pop()
 'one_more_element'
->>> dq.content()
+>>> deque.content()
 ['another_element', 'a_element', 'other_element!!']
->>> dq.clear()
+>>> deque.clear()
 True
->>> dq.content()
+>>> deque.content()
 []
 ```
