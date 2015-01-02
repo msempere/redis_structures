@@ -1,4 +1,4 @@
-# redis_structures [![Build Status](https://travis-ci.org/msempere/redis_structures.svg?branch=master)] (https://travis-ci.org/msempere/redis_structures)
+# Redis_Structures [![Build Status](https://travis-ci.org/msempere/redis_structures.svg?branch=master)] (https://travis-ci.org/msempere/redis_structures)
 
 Data structures for Redis
 
