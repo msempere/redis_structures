@@ -1,4 +1,4 @@
-# Redis_Containers [![Build Status](https://travis-ci.org/msempere/redis_containers.svg?branch=master)] (https://travis-ci.org/msempere/redis_containers)
+# redis_structures [![Build Status](https://travis-ci.org/msempere/redis_structures.svg?branch=master)] (https://travis-ci.org/msempere/redis_structures)
 
 Container data structures for Redis
 
@@ -21,7 +21,7 @@ python setup.py install
 ## Usage:
 * **STACK**: LIFO data structure
 ```python
->>> from redis_containers import Stack
+>>> from redis_structures import Stack
 >>> stack = Stack(name='dummy_stack', host='127.0.0.1', port=6379)
 >>> len(stack)
 0
@@ -45,7 +45,7 @@ True
 
 * **QUEUE**: FIFO data structure
 ```python
->>> from redis_containers import Queue
+>>> from redis_structures import Queue
 >>> queue = Queue(name='dummy_queue', host='127.0.0.1', port=6379)
 >>> len(queue)
 0
@@ -69,7 +69,7 @@ True
 
 * **PRIORITY QUEUE**: Abstract data type where each element has a priority associated
 ```python
->>> from redis_containers import PriorityQueue
+>>> from redis_structures import PriorityQueue
 >>> priority_queue = PriorityQueue(name='dummy_queue', host='127.0.0.1', port=6379)
 >>> len(priority_queue)
 0
@@ -93,7 +93,7 @@ True
 
 * **CIRCULAR BUFFER**: Fixed-size buffer with connected end-to-end
 ```python
->>> from redis_containers import CircularBuffer
+>>> from redis_structures import CircularBuffer
 >>> circular_buffer = CircularBuffer(name='dummy_cbuffer', size=3, host='127.0.0.1', port=6379)
 >>> len(circular_buffer)
 0
@@ -122,7 +122,7 @@ True
 
 * **DEQUE**: Double-ended queue also called head-tail linked list
 ```python
->>> from redis_containers import Deque
+>>> from redis_structures import Deque
 >>> deque = Deque(name='dummy_cbuffer', host='127.0.0.1', port=6379)
 >>> len(deque)
 0
