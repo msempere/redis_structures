@@ -1,4 +1,4 @@
-# Redis_Structures 
+![Logo](http://i.imgur.com/nD1Wj6y.png)
 
 Data structures for Redis
 
