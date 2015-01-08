@@ -9,8 +9,8 @@ Data structures for Redis
 * [Usage](#usage)
 
 ## Versions:
-* v0.1 [![Build Status](https://travis-ci.org/msempere/redis_structures.svg?branch=v0.1)](https://travis-ci.org/msempere/redis_structures)
-* master [![Build Status](https://travis-ci.org/msempere/redis_structures.svg?branch=master)](https://travis-ci.org/msempere/redis_structures)
+* v0.1 [![Build Status](https://travis-ci.org/msempere/redis_structures.svg?branch=v0.1)](https://travis-ci.org/msempere/redis_structures) [![Requirements Status](https://requires.io/github/msempere/redis_structures/requirements.svg?branch=master)](https://requires.io/github/msempere/redis_structures/requirements/?branch=master)
+* master [![Build Status](https://travis-ci.org/msempere/redis_structures.svg?branch=master)](https://travis-ci.org/msempere/redis_structures) [![Requirements Status](https://requires.io/github/msempere/redis_structures/requirements.svg?branch=master)](https://requires.io/github/msempere/redis_structures/requirements/?branch=v0.1)
 
 ## Structures:
 
